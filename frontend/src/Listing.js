@@ -31,7 +31,7 @@ function Listing(props) {
         <Card style={{ width: '50rem', backgroundColor: '#333333', boxShadow: '0 2px 4px rgba(0, 0, 0, 1)', padding: "10px"}} className="mx-auto mb-3 mt-3" bg="light-blue">
             <Card.Img className="text-white" variant="top" src={props.img_address} />
             <Card.Body>
-                <Card.Title className="text-white">{props.address}</Card.Title>
+                <Card.Title className="text-white">{props.address} - ${props.rent}/month</Card.Title>
                 <Card.Text className="text-white">{props.description}</Card.Text>
                 <Button className="text-white" variant="primary">{props.email}</Button>
             </Card.Body>

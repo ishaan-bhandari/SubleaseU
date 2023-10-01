@@ -13,7 +13,7 @@ function NavigationBar() {
             <Nav className="align-items-center">
                 <Nav.Link className="text-white nav" href="/">Home</Nav.Link>
                 <Nav.Item>
-                    <Button variant="primary" className="text-white nav bg-primary" href="/post-listing" id="post-button">Post Listing</Button>
+                    <Button variant="primary" className="text-white nav" href="/post-listing" id="post-button">Post Listing</Button>
                 </Nav.Item>
             </Nav>
         </Container>
