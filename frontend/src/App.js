@@ -1,36 +1,34 @@
 import React, { useState, useEffect } from 'react';
-import logo from './logo.svg';
+import axios from "axios";
+//import logo from './logo.svg';
 import './App.css';
 
 function App() {
-    const [data, setData] = useState(null);
+    const [data, setData] = useState({'message':'nothing'});
 
     useEffect(() => {
-        fetch('/api/data')
-            .then(response => response.json())
-            .then(data => setData(data.message));
-    }, []);
+        axios({
+          method: "GET",
+          url:"/api",
+        })
+        .then((response) => {
+          const res =response.data
+          setData(({
+            message: res.message}))
+        }).catch((error) => {
+          if (error.response) {
+            console.log(error.response)
+            console.log(error.response.status)
+            console.log(error.response.headers)
+            }
+        })}, [])
+        //end of new line 
 
     return (
         <div className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
                 
                 {/* Display the data from Flask API here */}
-                <h1>{data}</h1>
-
-                <p>
-                    Edit <code>src/App.js</code> and save to reload.
-                </p>
-                <a
-                    className="App-link"
-                    href="https://reactjs.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Learn React
-                </a>
-            </header>
+                <h1>{data.message}</h1>
         </div>
     );
 }
