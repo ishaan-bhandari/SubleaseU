@@ -1,4 +1,14 @@
-We 
+
+in /frontend:
+npm install
+
+to start frontend:
+in /frontend:
+npm run client
+
+to start backend (simultaneously in a separate terminal): 
+in /frontend:
+npm run server
 
 react-bootstrap
 npm-run-all

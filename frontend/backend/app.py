@@ -10,7 +10,7 @@ def default():
 
 @app.route('/api')
 def get_data():
-    data = {'message':'hello'}
+    data = {'message':'Server Online'}
     print("CALLED API")
     return jsonify(data)
 

@@ -4,6 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button'
 import "./Navbar.css"
+import { Link } from 'react-router-dom';
 
 //                 <Nav.Link className="text-white nav" href="/">Home</Nav.Link>
 // style={{backgroundColor: "black"}}
@@ -13,9 +14,11 @@ function NavigationBar() {
         <Container>
             <Navbar.Brand className="text-white nav" bg="primary" href="/">Our website name</Navbar.Brand>
             <Nav className="align-items-center">
-                <Nav.Item>
-                    <Button variant="primary" className="text-white nav" style={{backgroundColor: "darkorange", borderColor: "darkorange"}}href="/post-listing" id="post-button">Post Listing</Button>
-                </Nav.Item>
+            <Nav.Item>
+              <Link to="/post-listing">
+                <Button variant="primary" className="text-white nav" style={{ backgroundColor: "darkorange", borderColor: "darkorange" }} id="post-button">Post Listing</Button>
+              </Link>
+            </Nav.Item>
             </Nav>
         </Container>
     </Navbar>
@@ -23,3 +26,5 @@ function NavigationBar() {
 };
   
 export default NavigationBar;
+
+//<Button variant="primary" className="text-white nav" style={{backgroundColor: "darkorange", borderColor: "darkorange"}}action="/post-listing" id="post-button">Post Listing</Button>
