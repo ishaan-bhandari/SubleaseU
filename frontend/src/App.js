@@ -4,7 +4,7 @@ import axios from "axios";
 import './App.css';
 
 function App() {
-    const [data, setData] = useState({'message':'nothing'});
+    const [data, setData] = useState({'message':'Current Listings:'});
 
     useEffect(() => {
         axios({
@@ -28,7 +28,7 @@ function App() {
         <div className="App">
                 
                 {/* Display the data from Flask API here */}
-                <h1>{data.message}</h1>
+                <h1 className="header-color">{data.message}</h1>
         </div>
     );
 }

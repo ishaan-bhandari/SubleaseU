@@ -9,16 +9,22 @@ import "./Navbar.css"
 // style={{backgroundColor: "black"}}
 function NavigationBar() {
   return (
-    <Navbar style={{backgroundColor: "black"}} className="custom-navbar">
-        <Container>
-            <Navbar.Brand className="text-white nav" bg="primary" href="/">Our website name</Navbar.Brand>
-            <Nav className="align-items-center">
-                <Nav.Item>
-                    <Button variant="primary" className="text-white nav" style={{backgroundColor: "darkorange", borderColor: "darkorange"}}href="/post-listing" id="post-button">Post Listing</Button>
-                </Nav.Item>
-            </Nav>
-        </Container>
-    </Navbar>
+      <Navbar style={{backgroundColor: "black"}} className="custom-navbar">
+          <Container>
+              <Navbar.Brand className="text-white nav" bg="primary" href="/">SubleaseU</Navbar.Brand>
+              <Nav className="align-items-center">
+                  <Nav.Item>
+                      <Button variant="primary" className="text-white nav btn-custom" href="/post-listing" id="post-button-1">Post Listing</Button>
+                  </Nav.Item>
+                  <Nav.Item>
+                      <Button variant="primary" className="text-white nav btn-custom" href="/post-listing" id="post-button-2">View Listings</Button>
+                  </Nav.Item>
+                  <Nav.Item>
+                      <Button variant="primary" className="text-white nav btn-custom" href="/post-listing" id="post-button-3">Messages</Button>
+                  </Nav.Item>
+              </Nav>
+          </Container>
+      </Navbar>
   );
 };
   
