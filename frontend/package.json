@@ -12,6 +12,7 @@
     "react": "^18.2.0",
     "react-bootstrap": "^2.9.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.16.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -19,8 +20,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "start-backend": "cd backend && flask run",
-    "start-frontend": "npm start"
+    "client": "cd backend && flask run",
+    "server": "npm start"
   },
   "eslintConfig": {
     "extends": [

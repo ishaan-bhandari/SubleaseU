@@ -4,9 +4,9 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button'
 import "./Navbar.css"
+import { Link } from 'react-router-dom';
 
-//                 <Nav.Link className="text-white nav" href="/">Home</Nav.Link>
-// style={{backgroundColor: "black"}}
+
 function NavigationBar() {
   return (
       <Navbar style={{backgroundColor: "black"}} className="custom-navbar">
@@ -17,10 +17,10 @@ function NavigationBar() {
                       <Button variant="primary" className="text-white nav btn-custom" href="/post-listing" id="post-button-1">Post Listing</Button>
                   </Nav.Item>
                   <Nav.Item>
-                      <Button variant="primary" className="text-white nav btn-custom" href="/post-listing" id="post-button-2">View Listings</Button>
+                      <Button variant="primary" className="text-white nav btn-custom" href="/" id="post-button-2">View Listings</Button>
                   </Nav.Item>
                   <Nav.Item>
-                      <Button variant="primary" className="text-white nav btn-custom" href="/post-listing" id="post-button-3">Messages</Button>
+                      <Button variant="primary" className="text-white nav btn-custom" href="/messages" id="post-button-3">Messages</Button>
                   </Nav.Item>
               </Nav>
           </Container>
@@ -29,3 +29,5 @@ function NavigationBar() {
 };
   
 export default NavigationBar;
+
+//<Button variant="primary" className="text-white nav" style={{backgroundColor: "darkorange", borderColor: "darkorange"}}action="/post-listing" id="post-button">Post Listing</Button>
