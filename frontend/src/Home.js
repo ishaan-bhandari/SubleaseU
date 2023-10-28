@@ -37,7 +37,7 @@ function Home() {
 
 
   const [data, setdata] = useState({
-    listings: [{ 'rent': '1000', 'address': '1234 Green St', 'description': 'blah blah blah', 'email': 'example@gmail.com', 'img_address': 'https://www.mhmproperties.com/wp-content/uploads/2017/08/DSC_3928-1-800x500.jpg' }],
+    listings: [{ 'id_': '1234', 'rent': '1000', 'address': '1234 Green St', 'description': 'blah blah blah', 'email': 'example@gmail.com', 'img_address': 'https://www.mhmproperties.com/wp-content/uploads/2017/08/DSC_3928-1-800x500.jpg' }],
   });
 
   useEffect(() => {
@@ -60,14 +60,14 @@ function Home() {
       })
   })
 
-  const listingDataItems = data.listings.map(listing =>
-    <Listing 
-          rent = {listing.rent}
-          address= {listing.address}
-          description= {listing.description}
-          email= {listing.email}
-          img_address= {listing.img_address} />
-    )
+  // const listingDataItems = data.listings.map(listing =>
+  //   <Listing 
+  //         rent = {listing.rent}
+  //         address= {listing.address}
+  //         description= {listing.description}
+  //         email= {listing.email}
+  //         img_address= {listing.img_address} />
+  //   )
 
   return (
     <div className='Home' style={{ background: "linear-gradient(130deg,#13294b,#a33b00)" }}>
@@ -75,15 +75,15 @@ function Home() {
       <h1 style={{ color: "white" }}>{data1.message}</h1>
       <NavigationBar />
 
-      {listingDataItems}
-      {/* {data.listings.map((listing,index) =>
-        <Listing key={index}
+      {/* {listingDataItems} */}
+      {data.listings.map((listing) =>
+        <Listing _id={listing.id_}
           rent={listing.rent}
           address={listing.address}
           description={listing.description}
           email={listing.email}
           img_address={listing.img_address} />
-      )} */}
+      )}
 
     </div>
   );

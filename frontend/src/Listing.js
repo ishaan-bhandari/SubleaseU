@@ -1,6 +1,7 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import React from 'react';
+import axios from "axios";
 
 // class Listing extends React.Component {
 //     constructor(props) {
@@ -27,6 +28,16 @@ import React from 'react';
 // }
 
 function Listing(props) {
+    const handleDelete = () => {
+        axios.delete(`/delete-listing/${props._id}`)
+            .then(response => {
+                console.log('Listing deleted successfully');
+            })
+            .catch(error => {
+                console.error('Error deleting the listing', error);
+            });
+    };
+
     return (
         <Card style={{ width: '50rem', backgroundColor: '#333333', boxShadow: '0 2px 4px rgba(0, 0, 0, 1)', padding: "10px"}} className="mx-auto mb-3 mt-3" bg="light-blue">
             <Card.Img className="text-white" variant="top" src={props.img_address} />
@@ -34,6 +45,7 @@ function Listing(props) {
                 <Card.Title className="text-white">{props.address} - ${props.rent}/month</Card.Title>
                 <Card.Text className="text-white">{props.description}</Card.Text>
                 <Button className="text-white" variant="primary">{props.email}</Button>
+                <Button className="text-white" variant="danger" onClick={handleDelete}>Delete Listing</Button>
             </Card.Body>
         </Card>
     );

@@ -9,8 +9,9 @@ import axios from "axios";
 function AddressForm() {
   const [address, setAddress] = useState('');
   const [rent, setRent] = useState('');
-  const [imageAddress, setImageAddress] = useState('');
+  const [img_address, setImageAddress] = useState('');
   const [description, setDescription] = useState('');
+  const [email, setEmail] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,22 +19,21 @@ function AddressForm() {
     const listingData = {
       address,
       rent,
-      imageAddress,
+      img_address,
       description,
+      email
     };
   
     try {
       const response = await axios.post('/post-listing', listingData);
-      // Handle the response as needed (e.g., show a success message)
       console.log('Response from server:', response.data);
   
-      // Clear the form fields
       setAddress('');
       setRent('');
       setImageAddress('');
       setDescription('');
+      setEmail('');
     } catch (error) {
-      // Handle any errors, e.g., show an error message
       console.error('Error sending data:', error);
     }
   };
@@ -70,7 +70,7 @@ function AddressForm() {
         <Form.Control
           type="text"
           placeholder="Enter image address"
-          value={imageAddress}
+          value={img_address}
           onChange={(e) => setImageAddress(e.target.value)}
         />
       </Form.Group>
@@ -85,6 +85,17 @@ function AddressForm() {
           onChange={(e) => setDescription(e.target.value)}
         />
       </Form.Group>
+
+      <Form.Group>
+        <Form.Label>E-mail</Form.Label>
+        <Form.Control
+          type="text"
+          placeholder="Enter E-mail"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+      </Form.Group>
+
 
       <Button variant="primary" type="submit">
         Submit

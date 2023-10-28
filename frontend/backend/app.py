@@ -1,9 +1,15 @@
 #syncing the flask app
 from flask import Flask, jsonify, request
 from flask import Response
+from pymongo import MongoClient
+from bson import ObjectId
 from flask_cors import CORS
 import json
 
+# change to shared mongo link (if we ever make one)
+client = MongoClient('mongodb://localhost:27017/') 
+db = client['sublease'] 
+collection = db['listings'] 
 
 app = Flask(__name__)
 CORS(app)
@@ -22,21 +28,28 @@ def get_data():
 @app.route('/listings')
 def get_listings():
     # replace with mongodb call
-    data = [{'rent': '1000', 'address': '1234 Green St', 'description': 'blah blah blah', 'email': 'example@gmail.com', 'image_address': 'https://www.admissions.illinois.edu/Content/images/housing-bousfield.jpg'},
-                {'rent': '1000', 'address': '1234 Green St', 'description': 'blah blah blah', 'email': 'example@gmail.com', 'image_address': 'https://www.admissions.illinois.edu/Content/images/housing-bousfield.jpg'}]
-    print('LISTING API CALLED')
+    cursor = collection.find({})
+    data = list(cursor)
+    print(data)
+    for item in data:
+        item['_id'] = str(item['_id'])
+    print(data)
     return Response(json.dumps(data),  mimetype='application/json')
 
 @app.route('/post-listing', methods=['POST'])
 def post_listing():
-    data = request.json  # Assuming the data is sent as JSON
+    data = request.json
 
-    # Process the data as needed (e.g., save it to a database)
-    # You can access the data using data['address'], data['rent'], etc.
+    collection.insert_one(data)
 
-    # Respond with a success message or other response
-    response = {'message': 'Listing data received successfully'}
-    return jsonify(response)
+    print(data)
+    return 'Data Added'
+
+@app.route('/delete-listing/<string:id>', methods=['DELETE'])
+def delete_listing(id):
+
+    result = collection.delete_one({'_id': ObjectId(id)})
+    return 'Listing Deleted'
 
 if __name__ == '__main__':
     app.run(debug=False, port=8000)
