@@ -2,25 +2,46 @@
 import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import NavigationBar from './/Navbar.js'
+import axios from "axios";
+
 
 function AddressForm() {
   const [address, setAddress] = useState('');
   const [rent, setRent] = useState('');
-  const [imageAddress, setImageAddress] = useState('');
+  const [img_address, setImageAddress] = useState('');
   const [description, setDescription] = useState('');
+  const [email, setEmail] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    console.log('Submitted Data:', { address, rent, imageAddress, description });
-
-    setAddress('');
-    setRent('');
-    setImageAddress('');
-    setDescription('');
+  
+    const listingData = {
+      address,
+      rent,
+      img_address,
+      description,
+      email
+    };
+  
+    try {
+      const response = await axios.post('/post-listing', listingData);
+      console.log('Response from server:', response.data);
+  
+      setAddress('');
+      setRent('');
+      setImageAddress('');
+      setDescription('');
+      setEmail('');
+    } catch (error) {
+      console.error('Error sending data:', error);
+    }
   };
+  
 
   return (
+    <div>
+    <NavigationBar />
     <div style={{background: 'linear-gradient(130deg, #13294B, #a33b00)', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
     <Form style={{ maxWidth: '800px', color: 'white'}} onSubmit={handleSubmit}>
         <h1>Post Listing!</h1>
@@ -49,7 +70,7 @@ function AddressForm() {
         <Form.Control
           type="text"
           placeholder="Enter image address"
-          value={imageAddress}
+          value={img_address}
           onChange={(e) => setImageAddress(e.target.value)}
         />
       </Form.Group>
@@ -65,10 +86,22 @@ function AddressForm() {
         />
       </Form.Group>
 
+      <Form.Group>
+        <Form.Label>E-mail</Form.Label>
+        <Form.Control
+          type="text"
+          placeholder="Enter E-mail"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+      </Form.Group>
+
+
       <Button variant="primary" type="submit">
         Submit
       </Button>
     </Form>
+    </div>
     </div>
   );
 }
