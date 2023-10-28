@@ -6,7 +6,6 @@ import Button from 'react-bootstrap/Button'
 import "./Navbar.css"
 import { Link } from 'react-router-dom';
 
-
 function NavigationBar() {
   return (
       <Navbar style={{backgroundColor: "black"}} className="custom-navbar">
@@ -14,13 +13,19 @@ function NavigationBar() {
               <Navbar.Brand className="text-white nav" bg="primary" href="/">SubleaseU</Navbar.Brand>
               <Nav className="align-items-center">
                   <Nav.Item>
-                      <Button variant="primary" className="text-white nav btn-custom" href="/post-listing" id="post-button-1">Post Listing</Button>
+                      <Link to="/post-listing">
+                          <Button variant="primary" className="text-white nav btn-custom" id="post-button-1">Post Listing</Button>
+                      </Link>
                   </Nav.Item>
                   <Nav.Item>
-                      <Button variant="primary" className="text-white nav btn-custom" href="/" id="post-button-2">View Listings</Button>
+                      <Link to="/">
+                          <Button variant="primary" className="text-white nav btn-custom" id="post-button-2">View Listings</Button>
+                      </Link>
                   </Nav.Item>
                   <Nav.Item>
-                      <Button variant="primary" className="text-white nav btn-custom" href="/messages" id="post-button-3">Messages</Button>
+                      <Link to="/messages">
+                          <Button variant="primary" className="text-white nav btn-custom" id="post-button-3">Messages</Button>
+                      </Link>
                   </Nav.Item>
               </Nav>
           </Container>
@@ -29,5 +34,3 @@ function NavigationBar() {
 };
   
 export default NavigationBar;
-
-//<Button variant="primary" className="text-white nav" style={{backgroundColor: "darkorange", borderColor: "darkorange"}}action="/post-listing" id="post-button">Post Listing</Button>
