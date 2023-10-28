@@ -2,6 +2,9 @@
 import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import NavigationBar from './/Navbar.js'
+import axios from "axios";
+
 
 function AddressForm() {
   const [address, setAddress] = useState('');
@@ -9,18 +12,36 @@ function AddressForm() {
   const [imageAddress, setImageAddress] = useState('');
   const [description, setDescription] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    console.log('Submitted Data:', { address, rent, imageAddress, description });
-
-    setAddress('');
-    setRent('');
-    setImageAddress('');
-    setDescription('');
+  
+    const listingData = {
+      address,
+      rent,
+      imageAddress,
+      description,
+    };
+  
+    try {
+      const response = await axios.post('/post-listing', listingData);
+      // Handle the response as needed (e.g., show a success message)
+      console.log('Response from server:', response.data);
+  
+      // Clear the form fields
+      setAddress('');
+      setRent('');
+      setImageAddress('');
+      setDescription('');
+    } catch (error) {
+      // Handle any errors, e.g., show an error message
+      console.error('Error sending data:', error);
+    }
   };
+  
 
   return (
+    <div>
+    <NavigationBar />
     <div style={{background: 'linear-gradient(130deg, #13294B, #a33b00)', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
     <Form style={{ maxWidth: '800px', color: 'white'}} onSubmit={handleSubmit}>
         <h1>Post Listing!</h1>
@@ -69,6 +90,7 @@ function AddressForm() {
         Submit
       </Button>
     </Form>
+    </div>
     </div>
   );
 }

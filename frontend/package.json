@@ -20,8 +20,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "client": "cd backend && flask run",
-    "server": "npm start"
+    "server": "cd backend && flask run",
+    "client": "npm start"
   },
   "eslintConfig": {
     "extends": [
