@@ -12,18 +12,26 @@ function AddressForm() {
   const [img_address, setImageAddress] = useState('');
   const [description, setDescription] = useState('');
   const [email, setEmail] = useState('');
+  const [custom_id, setCustomId] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+    
+    let randomWholeNumber = Math.floor(Math.random() * 1000000000);
+    let id_string = randomWholeNumber.toString();
+    console.log("generated id: ", id_string);
+    setCustomId(id_string);
+    console.log("added id: ", custom_id);
+
     const listingData = {
       address,
       rent,
       img_address,
       description,
-      email
+      email,
+      custom_id: id_string
     };
-  
+
     try {
       const response = await axios.post('/post-listing', listingData);
       console.log('Response from server:', response.data);
@@ -33,6 +41,7 @@ function AddressForm() {
       setImageAddress('');
       setDescription('');
       setEmail('');
+      setCustomId('');
     } catch (error) {
       console.error('Error sending data:', error);
     }
