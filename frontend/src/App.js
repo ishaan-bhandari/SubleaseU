@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import NavigationBar from './Navbar.js'
 import Home from './Home.js';
 import PostListing from './PostListing.js';
 import Messages from './Messages.js';  // Make sure to import the Messages component
@@ -9,7 +8,6 @@ function App() {
     return (
         <div className="App">
           <Router>
-            <NavigationBar />  {/* Render the Navbar component */}
             <Routes>
               <Route path='/' element={<Home />} />
               <Route path='/post-listing' element={<PostListing />} />

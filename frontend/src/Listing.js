@@ -29,7 +29,7 @@ import axios from "axios";
 
 function Listing(props) {
     const handleDelete = () => {
-        axios.delete(`/delete-listing/${props._id}`)
+        axios.delete(`/delete-listing/${props.custom_id}`)
             .then(response => {
                 console.log('Listing deleted successfully');
             })
