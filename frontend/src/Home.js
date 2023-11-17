@@ -1,43 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from "react";
 import axios from "axios";
 //import logo from './logo.svg';
-import './App.css';
-import Listing from './Listing.js';
-import NavigationBar from './Navbar.js'
-import PostListing from './PostListing.js'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import "./App.css";
+import Listing from "./Listing.js";
+import NavigationBar from "./Navbar.js";
+import PostListing from "./PostListing.js";
+import {BrowserRouter as Router, Route, Link} from "react-router-dom";
 
 function Home() {
-  // const [data1, setData1] = useState({ message: 'Server Offline' });
-
-  // useEffect(() => {
-  //   axios({
-  //     method: "GET",
-  //     url: "/api",
-  //   })
-  //     .then((response) => {
-  //       const res = response.data
-  //       // setData1(({
-  //       //   message: res.message
-  //       // }))
-  //       console.log(res)
-  //       setData1(res)
-  //     }).catch((error) => {
-  //       if (error.response) {
-  //         console.log(error.response)
-  //         console.log(error.response.status)
-  //         console.log(error.response.headers)
-  //       }
-  //     })
-  // })
-
-
-
-
-
-
   const [data, setdata] = useState({
-    listings: [{ 'id_': '1234', 'rent': '1000', 'address': '1234 Green St', 'description': 'blah blah blah', 'email': 'example@gmail.com', 'img_address': 'https://www.mhmproperties.com/wp-content/uploads/2017/08/DSC_3928-1-800x500.jpg' }],
+    listings: [
+      {
+        id_: "1234",
+        rent: "1000",
+        address: "1234 Green St",
+        description: "blah blah blah",
+        email: "example@gmail.com",
+        img_address:
+          "https://www.mhmproperties.com/wp-content/uploads/2017/08/DSC_3928-1-800x500.jpg",
+      },
+    ],
   });
 
   const [min, setMin] = useState(0);
@@ -49,19 +31,20 @@ function Home() {
       url: `/listings/${min}/${max}`,
     })
       .then((response) => {
-        const res = response.data
-        console.log(res)
-        setdata(({
-          listings: res
-        }))
-      }).catch((error) => {
-        if (error.response) {
-          console.log(error.response)
-          console.log(error.response.status)
-          console.log(error.response.headers)
-        }
+        const res = response.data;
+        console.log(res);
+        setdata({
+          listings: res,
+        });
       })
-  })
+      .catch((error) => {
+        if (error.response) {
+          console.log(error.response);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        }
+      });
+  });
 
   const handleMinChange = (event) => {
     setMin(parseInt(event.target.value));
@@ -75,10 +58,11 @@ function Home() {
     event.preventDefault();
   };
 
-
-
   return (
-    <div className='Home' style={{ background: "linear-gradient(130deg,#13294b,#a33b00)" }}>
+    <div
+      className="Home"
+      style={{background: "linear-gradient(130deg,#13294b,#a33b00)"}}
+    >
       {/* Display the data from Flask API here */}
       {/* <h1 style={{ color: "white" }}>{data1.message}</h1> */}
       <NavigationBar />
@@ -106,7 +90,6 @@ function Home() {
             custom_id={listing.custom_id}
           />
         ))}
-
     </div>
   );
 }
