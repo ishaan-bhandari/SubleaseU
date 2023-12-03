@@ -45,7 +45,6 @@ function Listing(props) {
                 <Card.Title className="text-white">{props.address} - ${props.rent}/month</Card.Title>
                 <Card.Text className="text-white">{props.description}</Card.Text>
                 <Button className="text-white" variant="primary">{props.email}</Button>
-                <Button className="text-white" variant="danger" onClick={handleDelete}>Delete Listing</Button>
             </Card.Body>
         </Card>
     );
