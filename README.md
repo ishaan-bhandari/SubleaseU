@@ -23,6 +23,6 @@ For more details, you can check out our project proposal here attached in our re
 **Developers**  
 Harshith Moningi: Worked on storing the information in the database  
 Isaac Exposito: Worked on both the frontend and the backend  
-Ishaan Bhandari: Worked on the frontend and created unit/integration tests  
+Ishaan Bhandari: Worked on the frontend and the backend
 Murray Ahmed: Worked on the frontend
 
